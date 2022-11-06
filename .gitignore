@@ -4,3 +4,7 @@
 /common/common.iml
 /server/server.iml
 /client/client.iml
+.idea
+exportToHTML
+test
+.gitignore
