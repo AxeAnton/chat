@@ -2,43 +2,49 @@ package ru.ifmo.lib;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 
 public class Message implements Serializable {
-    private final String sender;
-    private final String text;
+    private String sender;
+    private String text;
     private LocalDateTime dateTime;
 
     public Message(String sender, String text) {
         this.sender = sender;
         this.text = text;
+        dateTime = LocalDateTime.now();
     }
 
     public String getSender() {
         return sender;
     }
 
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
     public String getText() {
         return text;
     }
 
-/*    public LocalDateTime getDateTime() {
-        return dateTime;
-    }*/
-
-    public void setDateTime() {
-        this.dateTime = LocalDateTime.now();
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public static Message getInstance(String sender, String text) {
-
-        return new Message(sender, text);
+    public void setDateTime(){
+        dateTime = LocalDateTime.now();
     }
+
 
     @Override
     public String toString() {
+        return "Message{" +
+                "sender='" + sender + '\'' +
+                ", text='" + text + '\'' +
+                ", dateTime=" + dateTime +
+                '}';
+    }
 
-        return dateTime.format(DateTimeFormatter.ofPattern("dd-MM HH.mm.ss"))+ ": " + sender + ": " + text;
+    public static Message getMessage(String sender, String text){
+        return new Message(sender, text);
     }
 }
